@@ -1,12 +1,15 @@
 
+local ped = PlayerPedId()
+
 for k, v in pairs(Config.Zones) do 
 
-local point = lib.points.new({
-    coords =  v.Pos,
-    distance = v.Radius,
+
+local sphere = lib.zones.sphere({
+    coords = v.Pos,
+    radius = v.Radius,
 })
 
-function point:onEnter()
+function sphere:onEnter()
 if v.Notification then 
     lib.showTextUI(v.Title, {
         position = "top-center",
@@ -23,8 +26,8 @@ if Config.Discord then
 end
 end
  
-function point:onExit()
-    local ped = PlayerPedId()
+function sphere:onExit()
+
     local vehicle = GetVehiclePedIsIn(ped, false)
  if v.Notification then 
     lib.hideTextUI()
@@ -33,8 +36,8 @@ function point:onExit()
     SetVehicleMaxSpeed(vehicle, 1000.0)
 end
  
-function point:nearby()
-    local ped = PlayerPedId()
+function sphere:inside()
+
     local vehicle = GetVehiclePedIsIn(ped, false)
 
 if v.DisableWeapons then 
