@@ -4,7 +4,7 @@ local ped = PlayerPedId()
 for k, v in pairs(Config.Zones) do 
 
 
-local point = lib.points.sphere({
+local point = lib.points.new({
     coords = v.Pos,
     radius = v.Radius,
 })
