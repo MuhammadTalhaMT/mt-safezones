@@ -6,7 +6,7 @@ for k, v in pairs(Config.Zones) do
 
 local point = lib.points.new({
     coords = v.Pos,
-    radius = v.Radius,
+    distance = v.Radius,
 })
 
 function point:onEnter()
@@ -36,7 +36,7 @@ function point:onExit()
     SetVehicleMaxSpeed(vehicle, 1000.0)
 end
  
-function point:inside()
+function point:nearby()
 
     local vehicle = GetVehiclePedIsIn(ped, false)
 
